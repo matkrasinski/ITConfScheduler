@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    # Provide database url and your username and password
+    url:
+    username:
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+  h2:
+    console.enabled: true
