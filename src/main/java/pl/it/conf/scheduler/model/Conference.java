@@ -15,7 +15,7 @@ public class Conference {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer conferenceId;
+    private Long conferenceId;
 
     @NonNull
     private Date date;
