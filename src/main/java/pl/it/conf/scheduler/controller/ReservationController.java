@@ -21,13 +21,20 @@ public class ReservationController {
     @ResponseBody
     public ResponseEntity<SimpleResponse> makeReservation(@RequestParam @Valid Long lectureId,
                                                           @RequestBody @Valid UserArg userArg) {
-        return ResponseEntity.ok(reservationService.makeReservation(lectureId, userArg));
+        return ResponseEntity.accepted().body(reservationService.makeReservation(lectureId, userArg));
     }
 
     @GetMapping("/list")
     @ResponseBody
     public ResponseEntity<List<ReservationDto>> displayReservations(@RequestParam @Valid String login) {
         return ResponseEntity.ok(reservationService.listReservations(login));
+    }
+
+    @DeleteMapping("/cancel")
+    @ResponseBody
+    public ResponseEntity<SimpleResponse> cancelReservation(@RequestParam @Valid Long reservationId,
+                                                            @RequestBody @Valid UserArg userArg) {
+        return ResponseEntity.accepted().body(reservationService.cancelReservation(userArg, reservationId));
     }
 
 }
