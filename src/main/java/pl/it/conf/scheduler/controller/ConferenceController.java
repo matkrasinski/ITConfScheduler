@@ -18,7 +18,7 @@ public class ConferenceController {
 
     private final ConferenceService conferenceService;
 
-    @GetMapping("/")
+    @GetMapping
     @ResponseBody
     public ResponseEntity<List<Conference>> displayAllConferences() {
         return ResponseEntity.ok(conferenceService.getConferences());

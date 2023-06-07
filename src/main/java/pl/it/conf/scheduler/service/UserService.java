@@ -16,6 +16,7 @@ import pl.it.conf.scheduler.repository.UserRepository;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +45,7 @@ public class UserService {
     }
 
     public SimpleResponse updateEmail(UserArg request) {
-        var user = userRepository.findUserByLogin(request.getLogin());
+        Optional<User> user = userRepository.findUserByLogin(request.getLogin());
         if (user.isEmpty())
             throw new IllegalArgumentException("User not found");
 
