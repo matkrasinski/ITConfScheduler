@@ -25,8 +25,7 @@ public class User {
     @NonNull
     private String email;
 
-    @OneToMany
-    @JoinColumn(name = "reservation_id")
+    @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
 }
 

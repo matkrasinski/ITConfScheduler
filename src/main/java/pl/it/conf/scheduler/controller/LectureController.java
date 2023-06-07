@@ -1,5 +1,6 @@
 package pl.it.conf.scheduler.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class LectureController {
 
     @GetMapping("/lectures")
     @ResponseBody
-    public ResponseEntity<List<LectureDto>> browseConferenceLectures(@RequestParam Long conferenceId) {
+    public ResponseEntity<List<LectureDto>> browseConferenceLectures(@RequestParam @Valid Long conferenceId) {
         return ResponseEntity.ok(lectureService.browseLectures(conferenceId));
     }
 

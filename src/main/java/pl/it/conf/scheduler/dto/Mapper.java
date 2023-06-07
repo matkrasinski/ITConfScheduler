@@ -2,6 +2,7 @@ package pl.it.conf.scheduler.dto;
 
 import org.springframework.stereotype.Service;
 import pl.it.conf.scheduler.model.Lecture;
+import pl.it.conf.scheduler.model.Reservation;
 import pl.it.conf.scheduler.model.User;
 
 @Service
@@ -21,6 +22,16 @@ public class Mapper {
                 .endTime(lecture.getEndTime())
                 .theme(lecture.getTheme())
                 .remainingCapacity(lecture.getRemainingCapacity())
+                .build();
+    }
+
+    public ReservationDto mapReservation(Reservation reservation) {
+        return new ReservationDto.ReservationDtoBuilder()
+                .reservationId(reservation.getReservationId())
+                .lectureId(reservation.getLecture().getLectureId())
+                .startTime(reservation.getLecture().getStartTime())
+                .endTime(reservation.getLecture().getEndTime())
+                .theme(reservation.getLecture().getTheme())
                 .build();
     }
 }

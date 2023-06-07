@@ -31,10 +31,11 @@ public class Lecture {
     @NonNull
     private Integer remainingCapacity;
 
-    @OneToMany
-    @JoinColumn(name = "reservation_id")
+    @NonNull
+    @OneToMany(mappedBy = "lecture")
     private List<Reservation> reservations;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "conference_id")
     private Conference conferenceId;

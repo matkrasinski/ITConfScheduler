@@ -33,6 +33,7 @@ public class UserService {
                             .login(request.getLogin())
                             .email(request.getEmail())
                             .build());
+
             return new UserResponse(
                     HttpStatus.CREATED.value(),
                     "Successfully registered user",
@@ -44,12 +45,12 @@ public class UserService {
 
     public SimpleResponse updateEmail(UserArg request) {
         var user = userRepository.findUserByLogin(request.getLogin());
-        if (user == null)
+        if (user.isEmpty())
             throw new IllegalArgumentException("User not found");
 
-        user.setEmail(request.getEmail());
+        user.get().setEmail(request.getEmail());
 
-        userRepository.save(user);
+        userRepository.save(user.get());
         return new SimpleResponse(
                 HttpStatus.OK.value(),
                 "Successfully updated user email"

@@ -1,21 +1,20 @@
 package pl.it.conf.scheduler.dto;
 
-
 import lombok.*;
 
 import java.time.LocalTime;
+
 
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class LectureDto {
+public class ReservationDto {
+    @NonNull
+    private Long reservationId;
 
     @NonNull
     private Long lectureId;
-
-    @NonNull
-    private String theme;
 
     @NonNull
     private LocalTime startTime;
@@ -24,6 +23,6 @@ public class LectureDto {
     private LocalTime endTime;
 
     @NonNull
-    private Integer remainingCapacity;
+    private String theme;
 
 }

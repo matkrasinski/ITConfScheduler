@@ -38,7 +38,7 @@ public class UserController {
 
     @GetMapping("/users/all")
     @ResponseBody
-    public ResponseEntity<List<UserDto>> displayAllUsers(@RequestParam String organizerKey) {
+    public ResponseEntity<List<UserDto>> displayAllUsers(@RequestParam @Valid String organizerKey) {
         return new ResponseEntity<>(
                 userService.displayAllUsers(organizerKey),
                 HttpStatus.OK

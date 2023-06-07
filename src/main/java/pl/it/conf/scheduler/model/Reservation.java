@@ -2,25 +2,30 @@ package pl.it.conf.scheduler.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "reservations")
 public class Reservation {
 
     @Id
-    @Column(name = "reservation_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "reservation_id")
     private Long reservationId;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 }
