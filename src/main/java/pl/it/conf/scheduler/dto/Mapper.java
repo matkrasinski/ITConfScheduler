@@ -34,4 +34,14 @@ public class Mapper {
                 .theme(reservation.getLecture().getTheme())
                 .build();
     }
+
+    public LectureWithAttendanceDto mapLectureWithAttendance(Lecture lecture, Integer maxSize) {
+        return new LectureWithAttendanceDto.LectureWithAttendanceDtoBuilder()
+                .lectureId(lecture.getLectureId())
+                .startTime(lecture.getStartTime())
+                .endTime(lecture.getEndTime())
+                .theme(lecture.getTheme())
+                .attendance(((double) Math.round(((double) maxSize - lecture.getRemainingCapacity()) / maxSize * 10000) / 100))
+                .build();
+    }
 }
