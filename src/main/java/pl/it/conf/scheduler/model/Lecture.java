@@ -15,6 +15,7 @@ import java.util.List;
 public class Lecture {
 
     @Id
+    @Column(name = "lecture_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long lectureId;
 
@@ -36,5 +37,5 @@ public class Lecture {
 
     @ManyToOne
     @JoinColumn(name = "conference_id")
-    private Conference conference;
+    private Conference conferenceId;
 }

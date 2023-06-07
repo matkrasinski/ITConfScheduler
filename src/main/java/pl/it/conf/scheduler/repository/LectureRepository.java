@@ -1,6 +1,14 @@
 package pl.it.conf.scheduler.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import pl.it.conf.scheduler.model.Conference;
 import pl.it.conf.scheduler.model.Lecture;
 
-public interface LectureRepository extends JpaRepository<Lecture, Long> {}
+import java.util.List;
+
+public interface LectureRepository extends JpaRepository<Lecture, Long> {
+
+    List<Lecture> findAllByConferenceId(Conference conferenceId);
+
+
+}

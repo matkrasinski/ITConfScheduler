@@ -44,7 +44,7 @@ public class RestExceptionHandler {
                 message,
                 error),
                 new HttpHeaders(),
-                HttpStatus.FORBIDDEN);
+                httpStatus);
     }
 
 }
