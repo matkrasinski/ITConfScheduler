@@ -39,6 +39,9 @@ public class ReservationService {
         if (lecture.isEmpty())
             throw new IllegalArgumentException("Lecture with given ID does not exist");
 
+        if (lecture.get().getRemainingCapacity() == 0)
+            throw new ForbiddenException("All seats for the lecture have already been reserved");
+
         List<Reservation> userReservations = user.get().getReservations()
                         .stream()
                         .filter(e -> e.getLecture().getConferenceId() == lecture.get().getConferenceId())
