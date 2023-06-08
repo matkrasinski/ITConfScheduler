@@ -62,7 +62,7 @@ public class ReservationService {
 
         EmailManager.sendEmail(LocalDateTime.now(), user.get().getEmail(), mapper.mapReservation(reservation));
 
-        return new SimpleResponse(HttpStatus.OK.value(), "Reservation made successfully");
+        return new SimpleResponse(HttpStatus.ACCEPTED.value(), "Reservation made successfully");
     }
 
     public List<ReservationDto> listReservations(String logic) {
@@ -73,14 +73,14 @@ public class ReservationService {
         return user.get().getReservations().stream().map(mapper::mapReservation).toList();
     }
 
-    public SimpleResponse cancelReservation(UserArg userArg, Long reservationId) {
-        Optional<User> user = userRepository.findUserByLogin(userArg.getLogin());
+    public SimpleResponse cancelReservation(String login, Long reservationId) {
+        Optional<User> user = userRepository.findUserByLogin(login);
         if (user.isEmpty())
             throw new IllegalArgumentException("User with this login does not exist");
 
         Optional<Reservation> reservation = reservationRepository.findById(reservationId);
         if (reservation.isEmpty() || !user.get().getReservations().contains(reservation.get()))
-            throw new IllegalArgumentException("You do not have this reservation");
+            throw new ForbiddenException("You do not have this reservation");
 
         reservationRepository.delete(reservation.get());
 

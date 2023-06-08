@@ -7,9 +7,10 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
-    hibernate.ddl-auto: update
-    show-sql: true
+    hibernate.ddl-auto: create
+    show-sql: false
     defer-datasource-initialization: true
+    open-in-view: true
   sql:
     init:
       mode: always

@@ -53,7 +53,7 @@ public class UserService {
 
         userRepository.save(user.get());
         return new SimpleResponse(
-                HttpStatus.OK.value(),
+                HttpStatus.ACCEPTED.value(),
                 "Successfully updated user email"
         );
     }

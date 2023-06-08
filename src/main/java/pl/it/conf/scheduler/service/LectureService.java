@@ -59,7 +59,10 @@ public class LectureService {
         for (var entry : themeGroups.entrySet()) {
             double interest = 0;
             for (var i : entry.getValue())
-                 interest += (double) (maxSize - i.getRemainingCapacity()) / maxSize;
+                 interest += (maxSize - i.getRemainingCapacity());
+
+            interest = interest / (maxSize * entry.getValue().size());
+
             lectureThemeDtoList.add(LectureThemeDto.builder()
                             .theme(entry.getKey())
                             .interest((double) Math.round(interest * 10000) / 100)

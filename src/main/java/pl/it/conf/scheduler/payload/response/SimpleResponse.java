@@ -1,6 +1,7 @@
 package pl.it.conf.scheduler.payload.response;
 
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class SimpleResponse {
+
+    @Schema(description = "status code")
     private int status;
+
+    @Schema(description = "response message")
     private String message;
 }
