@@ -28,7 +28,7 @@ public class ReservationController {
     @PostMapping
     @ResponseBody
     @Operation(summary = "Make reservation for the given lecture", description = "Make reservation for the given lecture")
-    @Parameter(name = "lectureId", description = "Lecture ID")
+    @Parameter(name = "lectureId", description = "Lecture ID", example = "1")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "202", description  = "You made reservation for given user",
                     content = @Content(mediaType = "application/json",
@@ -62,7 +62,7 @@ public class ReservationController {
     @GetMapping("/list")
     @ResponseBody
     @Operation(summary = "List all reservations for the given user", description = "List all reservations for the given user")
-    @Parameter(name = "login", description = "User login")
+    @Parameter(name = "login", description = "User login", example = "example")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
                     description  = "All reservations for the given user successfully retrieved",
@@ -88,8 +88,8 @@ public class ReservationController {
     @DeleteMapping("/cancel")
     @ResponseBody
     @Operation(summary = "Cancel reservation for the given user", description = "Cancel reservation for the given user")
-    @Parameter(name = "reservationId", description = "Reservation ID")
-    @Parameter(name = "login", description = "User login")
+    @Parameter(name = "reservationId", description = "Reservation ID", example = "1")
+    @Parameter(name = "login", description = "User login", example = "example")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "202", description = "Reservations cancelled",
                     content = @Content(mediaType = "application/json",

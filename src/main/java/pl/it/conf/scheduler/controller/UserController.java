@@ -80,7 +80,7 @@ public class UserController {
     @GetMapping("/all")
     @ResponseBody
     @Operation(summary = "Retrieve all users with their data", description = "Retrieve all users with their data")
-    @Parameter(name = "organizerKey", description = "Conference organizer key")
+    @Parameter(name = "organizerKey", description = "Conference organizer key", example = "secretKey")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved all users",
                     content = @Content(mediaType = "application/json",

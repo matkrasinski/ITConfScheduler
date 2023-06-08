@@ -27,7 +27,7 @@ public class LectureController {
 
     @ResponseBody
     @Operation(summary = "Browse lectures for the given conference", description = "Browse lectures for the given conference")
-    @Parameter(name = "conferenceId", description = "Conference ID")
+    @Parameter(name = "conferenceId", description = "Conference ID", example = "1")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Lectures retrieved successfully",
                     content = @Content(mediaType = "application/json",
@@ -56,8 +56,8 @@ public class LectureController {
     @ResponseBody
     @Operation(summary = "Browse attendance for all conference lectures", description = "Browse attendance for all conference lectures")
     @Parameters(value = {
-            @Parameter(name = "organizerKey", description = "Conference organizer key"),
-            @Parameter(name = "conferenceId", description = "Conference ID")
+            @Parameter(name = "organizerKey", description = "Conference organizer key", example = "secretKey"),
+            @Parameter(name = "conferenceId", description = "Conference ID", example = "1")
     })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Lectures with attendance retrieved successfully",
@@ -92,8 +92,8 @@ public class LectureController {
     @ResponseBody
     @Operation(summary = "Browse themes interests based on lectures attendance", description = "Browse themes interests based on lectures attendance")
     @Parameters(value = {
-            @Parameter(name = "organizerKey", description = "Conference organizer key"),
-            @Parameter(name = "conferenceId", description = "Conference ID")
+            @Parameter(name = "organizerKey", description = "Conference organizer key", example = "secretKey"),
+            @Parameter(name = "conferenceId", description = "Conference ID", example = "1")
     })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Themes interests retrieved successfully",
